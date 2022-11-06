@@ -78,7 +78,7 @@
             android:id="@+id/tv_Today_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            time="@{item.time}"
+            today="@{item.time}"
             android:text="sep,12"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:layout_marginEnd="30dp"

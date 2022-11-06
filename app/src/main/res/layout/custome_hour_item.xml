@@ -25,7 +25,7 @@
 
             <TextView
                 android:id="@+id/tv_hour_item_degree"
-                temp="@{item_hour.temperature}"
+                weatherTemperature="@{item_hour.temperature}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="31"
@@ -35,7 +35,7 @@
 
             <ImageView
                 android:id="@+id/iv_hour_item_fhape"
-                weatherIcon="@{item_hour.weatherType}"
+                weatherType="@{item_hour.weatherType}"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="8dp"
@@ -50,8 +50,7 @@
 
             <TextView
                 android:id="@+id/tv_hour_item_time"
-
-                time="@{item_hour.time}"
+                today="@{item_hour.time}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

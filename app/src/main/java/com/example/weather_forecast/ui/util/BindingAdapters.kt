@@ -10,15 +10,19 @@ import java.time.format.DateTimeFormatter
 import kotlin.math.roundToInt
 
 @BindingAdapter("weatherType")
-fun ImageView.bindWeatherTypeImage(weatherType: WeatherType) {
-    setImageResource(weatherType.iconRes)
-    contentDescription = weatherType.weatherDesc
+fun ImageView.bindWeatherTypeImage(weatherType: WeatherType?) {
+    weatherType?.let {
+        setImageResource(it.iconRes)
+        contentDescription = it.weatherDesc
+    }
 }
 
 @SuppressLint("SetTextI18n")
 @BindingAdapter("today")
-fun TextView.bindDayText(time: LocalDateTime) {
-    text = "Today, " + time.format(DateTimeFormatter.ofPattern("d MMMM"))
+fun TextView.bindDayText(time: LocalDateTime?) {
+    time?.let {
+        text = "Today, " + time.format(DateTimeFormatter.ofPattern("d MMMM"))
+    }
 }
 
 @SuppressLint("SetTextI18n")

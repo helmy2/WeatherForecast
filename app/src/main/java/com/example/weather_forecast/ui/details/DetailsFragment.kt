@@ -74,8 +74,12 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.item = listToDay.first()
+
         val todayAdapter = TodayRecyclerAdapter(listToDay)
+        val forecastAdapter = ForecastRecyclerAdapter(listForcast)
+
+        binding.item = listToDay.first()
         binding.recyclerViewToday.adapter = todayAdapter
+        binding.recyclerViewNextForecast.adapter = forecastAdapter
     }
 }

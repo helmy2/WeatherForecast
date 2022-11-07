@@ -4,10 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weather_forecast.databinding.CustomeDayItemBinding
-import com.example.weather_forecast.databinding.CustomeHourItemBinding
 import com.example.weather_forecast.domain.model.WeatherDetails
 
-class ForecastRecyclerAdapter(private val data:List<WeatherDetails>):RecyclerView.Adapter<ForecastRecyclerAdapter.ForecastViewHolder>() {
+class ForecastRecyclerAdapter(private val data2:List<WeatherDetails>):RecyclerView.Adapter<ForecastRecyclerAdapter.ForecastViewHolder>() {
 
 
 
@@ -18,11 +17,11 @@ class ForecastRecyclerAdapter(private val data:List<WeatherDetails>):RecyclerVie
     }
 
     override fun onBindViewHolder(holder: ForecastViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(data2[position])
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return data2.size
     }
 
     class ForecastViewHolder(val binding:CustomeDayItemBinding):RecyclerView.ViewHolder(binding.root){

@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.weather_forecast.databinding.FragmentDetailsBinding
 import com.example.weather_forecast.domain.model.WeatherDetails
 import com.example.weather_forecast.domain.model.WeatherType
 import java.time.LocalDateTime
-
 
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
@@ -39,7 +39,7 @@ class DetailsFragment : Fragment() {
     private val listForcast = listOf(
         WeatherDetails(
             LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0,
-            WeatherType.fromWMO(5)
+            WeatherType.fromWMO(2)
         ),
         WeatherDetails(
             LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0,
@@ -47,19 +47,19 @@ class DetailsFragment : Fragment() {
         ),
         WeatherDetails(
             LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0,
-            WeatherType.fromWMO(5)
+            WeatherType.fromWMO(55)
         ),
         WeatherDetails(
             LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0,
-            WeatherType.fromWMO(5)
+            WeatherType.fromWMO(77)
         ),
         WeatherDetails(
             LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0,
-            WeatherType.fromWMO(5)
+            WeatherType.fromWMO(45)
         ),
         WeatherDetails(
             LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0,
-            WeatherType.fromWMO(5)
+            WeatherType.fromWMO(2)
         ),
     )
 
@@ -78,8 +78,9 @@ class DetailsFragment : Fragment() {
         val todayAdapter = TodayRecyclerAdapter(listToDay)
         val forecastAdapter = ForecastRecyclerAdapter(listForcast)
 
-        binding.item = listToDay.first()
+        binding.dateItem = listToDay.first()
         binding.recyclerViewToday.adapter = todayAdapter
         binding.recyclerViewNextForecast.adapter = forecastAdapter
+
     }
 }

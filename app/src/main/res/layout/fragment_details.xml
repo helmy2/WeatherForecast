@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="item"
+            name="date_item"
             type="com.example.weather_forecast.domain.model.WeatherDetails" />
 
     </data>
@@ -77,7 +77,7 @@
             android:id="@+id/tv_Today_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            today="@{item.time}"
+            today_date_template="@{date_item.time}"
             android:text="sep,12"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:layout_marginEnd="30dp"
@@ -131,6 +131,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginEnd="15dp"
             tools:listitem="@layout/custome_day_item"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

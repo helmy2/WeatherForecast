@@ -42,3 +42,23 @@ fun TextView.bindWindSpeedText(speed: Double) {
 fun TextView.bindHumidityText(hum: Double) {
     text = "Hum  |  ${hum.roundToInt()} %"
 }
+
+
+@BindingAdapter("today_date_template")
+fun TextView.bindToadyDataText(time: LocalDateTime?) {
+    time?.let {
+        text = time.format(DateTimeFormatter.ofPattern("MMM , d"))
+    }
+}
+    @BindingAdapter("today_time_template")
+fun TextView.bindToadyTimeText(time: LocalDateTime?) {
+    time?.let {
+        text =  time.format(DateTimeFormatter.ofPattern("H:m a"))
+    }
+}
+    @BindingAdapter("forecast_date_template")
+fun TextView.bindForecastDataText(time: LocalDateTime?) {
+    time?.let {
+        text =  time.format(DateTimeFormatter.ofPattern("MMM , d"))
+    }
+}

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<variable
-    name="item_day"
-    type="com.example.weather_forecast.domain.model.WeatherDetails" />
+
+        <variable
+            name="item_day"
+            type="com.example.weather_forecast.domain.model.WeatherDetails" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        app:cardCornerRadius="15dp"
-        >
+        app:cardCornerRadius="15dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -23,8 +23,8 @@
 
             <TextView
                 android:id="@+id/tv_day_item_day"
-                android:layout_width="wrap_content"
                 forecast_date_template="@{item_day.time}"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sat,12"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -48,19 +48,19 @@
                 android:id="@+id/tv_day_item_seison"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="@{item_day.weatherType.weatherDesc}"
                 android:layout_marginStart="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_day_item_shape"
                 app:layout_constraintStart_toEndOf="@+id/iv_day_item_shape"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@{item_day.weatherType.weatherDesc}" />
 
 
             <TextView
                 android:id="@+id/tv_day_item_degree"
+                weatherTemperature="@{item_day.temperature}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="18^C"
-                weatherTemperature="@{item_day.temperature}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

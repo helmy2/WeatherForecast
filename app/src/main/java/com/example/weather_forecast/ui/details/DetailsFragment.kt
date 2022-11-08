@@ -13,60 +13,49 @@ import java.time.LocalDateTime
 
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
-
     private val listToDay = listOf(
         WeatherDetails(
-            LocalDateTime.now(),
-            25.0, 1012.2, 9.0, 89.0,
-            WeatherType.fromWMO(2)
-        ),
-        WeatherDetails(
-            LocalDateTime.now(),
-            55.0, 1012.2, 9.0, 89.0,
-            WeatherType.fromWMO(45)
-        ),
-        WeatherDetails(
-            LocalDateTime.now(),
-            25.0, 1012.2, 9.0, 89.0,
-            WeatherType.fromWMO(55)
-        ),
-        WeatherDetails(
-            LocalDateTime.now(),
-            25.0, 1012.2, 9.0, 89.0,
-            WeatherType.fromWMO(77)
+            LocalDateTime.now(), 25.0, 1012.2, 9.0, 89.0, WeatherType.fromWMO(2)
+        ), WeatherDetails(
+            LocalDateTime.now(), 55.0, 1012.2, 9.0, 89.0, WeatherType.fromWMO(45)
+        ), WeatherDetails(
+            LocalDateTime.now(), 25.0, 1012.2, 9.0, 89.0, WeatherType.fromWMO(55)
+        ), WeatherDetails(
+            LocalDateTime.now(), 25.0, 1012.2, 9.0, 89.0, WeatherType.fromWMO(77)
         )
     )
     private val listForcast = listOf(
         WeatherDetails(
-            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0,
-            WeatherType.fromWMO(2)
+            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0, WeatherType.fromWMO(2)
         ),
         WeatherDetails(
-            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0,
-            WeatherType.fromWMO(5)
+            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0, WeatherType.fromWMO(5)
         ),
         WeatherDetails(
-            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0,
-            WeatherType.fromWMO(55)
+            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0, WeatherType.fromWMO(55)
         ),
         WeatherDetails(
-            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0,
-            WeatherType.fromWMO(77)
+            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0, WeatherType.fromWMO(77)
         ),
         WeatherDetails(
-            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0,
-            WeatherType.fromWMO(45)
+            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0, WeatherType.fromWMO(45)
         ),
         WeatherDetails(
-            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0,
-            WeatherType.fromWMO(2)
+            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0, WeatherType.fromWMO(2)
+        ),
+        WeatherDetails(
+            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0, WeatherType.fromWMO(2)
+        ),
+        WeatherDetails(
+            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0, WeatherType.fromWMO(2)
+        ),
+        WeatherDetails(
+            LocalDateTime.now(), 25.0, 1015.2, 10.0, 90.0, WeatherType.fromWMO(2)
         ),
     )
 
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailsBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -74,7 +63,6 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val todayAdapter = TodayRecyclerAdapter(listToDay)
         val forecastAdapter = ForecastRecyclerAdapter(listForcast)
 

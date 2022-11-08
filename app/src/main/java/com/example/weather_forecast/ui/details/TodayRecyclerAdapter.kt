@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weather_forecast.databinding.CustomeHourItemBinding
 import com.example.weather_forecast.domain.model.WeatherDetails
 
-class TodayRecyclerAdapter(private val data:List<WeatherDetails>):RecyclerView.Adapter<TodayRecyclerAdapter.TodayViewHolder>() {
-
-
+class TodayRecyclerAdapter(private val data: List<WeatherDetails>) :
+    RecyclerView.Adapter<TodayRecyclerAdapter.TodayViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayViewHolder {
-        val listOfDay = CustomeHourItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val listOfDay =
+            CustomeHourItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TodayViewHolder(listOfDay)
     }
 
@@ -23,10 +23,11 @@ class TodayRecyclerAdapter(private val data:List<WeatherDetails>):RecyclerView.A
         return data.size
     }
 
-    class TodayViewHolder(val binding : CustomeHourItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class TodayViewHolder(val binding: CustomeHourItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item:WeatherDetails){
-            binding.itemHour=item
+        fun bind(item: WeatherDetails) {
+            binding.itemHour = item
         }
 
     }

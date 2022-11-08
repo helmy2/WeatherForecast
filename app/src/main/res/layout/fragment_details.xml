@@ -10,10 +10,7 @@
 
     </data>
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,7 +21,6 @@
 
         <TextView
             android:id="@+id/tv_back"
-
             style="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,7 +42,9 @@
             android:padding="8dp"
             android:src="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?attr/colorOnBackground"
+            />
 
         <ImageView
             android:id="@+id/img_setting_icon"
@@ -59,7 +57,9 @@
             android:src="@drawable/ic_setting"
             app:layout_constraintBottom_toBottomOf="@+id/tv_back"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?attr/colorOnBackground"
+            />
 
         <TextView
             android:id="@+id/tv_Today"
@@ -105,7 +105,6 @@
             android:layout_height="wrap_content"
             android:text="Next Forecast"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-
             android:layout_marginStart="30dp"
             android:layout_marginTop="50dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -120,22 +119,25 @@
             android:layout_marginEnd="30dp"
             android:src="@drawable/ic_next_forecast"
             app:layout_constraintBottom_toBottomOf="@+id/tv_Next_Forecast"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="?attr/colorOnBackground"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_Next_Forecast"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:orientation="vertical"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="15dp"
-            tools:listitem="@layout/custome_day_item"
+            android:layout_marginBottom="15dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_Next_Forecast" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_Next_Forecast"
+            app:tint="?attr/colorOnBackground"
+            tools:listitem="@layout/custome_day_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+
 </layout>

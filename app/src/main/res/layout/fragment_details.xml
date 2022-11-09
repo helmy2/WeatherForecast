@@ -25,37 +25,20 @@
             style="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="25dp"
             android:padding="8dp"
             android:text="Back"
             app:layout_constraintBottom_toBottomOf="@+id/img_back_icon"
             app:layout_constraintStart_toEndOf="@+id/img_back_icon"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/img_back_icon" />
 
         <ImageView
             android:id="@+id/img_back_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="25dp"
-            android:padding="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
             android:src="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="?attr/colorOnBackground" />
-
-        <ImageView
-            android:id="@+id/img_setting_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="@string/pin"
-            android:padding="8dp"
-            android:src="@drawable/ic_setting"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_back"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="?attr/colorOnBackground" />
 
@@ -64,7 +47,7 @@
             style="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Today"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -76,7 +59,7 @@
             today_date_template="@{date_item.time}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="16dp"
             android:text="sep,12"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toBottomOf="@+id/tv_Today"
@@ -101,7 +84,7 @@
             style="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Next Forecast"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -112,12 +95,13 @@
             android:id="@+id/img_forecast_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="16dp"
             android:contentDescription="@string/pin"
             android:padding="8dp"
             android:src="@drawable/ic_next_forecast"
             app:layout_constraintBottom_toBottomOf="@+id/tv_Next_Forecast"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_Next_Forecast"
             app:tint="?attr/colorOnBackground" />
 
         <androidx.recyclerview.widget.RecyclerView

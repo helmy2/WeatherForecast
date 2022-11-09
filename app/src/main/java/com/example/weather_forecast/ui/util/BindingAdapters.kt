@@ -48,3 +48,23 @@ fun TextView.bindHumidityText(hum: Double) {
 fun View.bindVisibleView(isVisible: Boolean?) {
     visibility = if (isVisible == true) View.VISIBLE else View.INVISIBLE
 }
+
+
+@BindingAdapter("today_date_template")
+fun TextView.bindToadyDataText(time: LocalDateTime?) {
+    time?.let {
+        text = time.format(DateTimeFormatter.ofPattern("MMM , d"))
+    }
+}
+    @BindingAdapter("today_time_template")
+fun TextView.bindToadyTimeText(time: LocalDateTime?) {
+    time?.let {
+        text =  time.format(DateTimeFormatter.ofPattern("H:m a"))
+    }
+}
+    @BindingAdapter("forecast_date_template")
+fun TextView.bindForecastDataText(time: LocalDateTime?) {
+    time?.let {
+        text =  time.format(DateTimeFormatter.ofPattern("MMM , d"))
+    }
+}

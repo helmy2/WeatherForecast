@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item_day"
+            type="com.example.weather_forecast.domain.model.WeatherDetails" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="15dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_day_item_day"
+                forecast_date_template="@{item_day.time}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sat,12"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_day_item_shape"
+                weatherType="@{item_day.weatherType}"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_day_item_degree"
+                app:layout_constraintHorizontal_bias="0.363"
+                app:layout_constraintStart_toEndOf="@+id/tv_day_item_day"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/ic_heavysnow" />
+
+            <TextView
+                android:id="@+id/tv_day_item_seison"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_day_item_shape"
+                app:layout_constraintStart_toEndOf="@+id/iv_day_item_shape"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@{item_day.weatherType.weatherDesc}" />
+
+
+            <TextView
+                android:id="@+id/tv_day_item_degree"
+                weatherTemperature="@{item_day.temperature}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18^C"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

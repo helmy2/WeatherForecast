@@ -15,6 +15,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.weather_forecast.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatter.ofPattern
 
 
 @AndroidEntryPoint
@@ -38,10 +41,13 @@ class HomeFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.currentWeatherData.collect {
-                    binding.item = it?.currentWeatherData
-                    Log.d("TAG", "onViewCreated:$it")
-                    binding.loading = it == null
+                viewModel.currentWeatherData.collect { list ->
+                    if (list != null) {
+                        binding.item = list
+                        binding.loading = false
+                    } else {
+                        binding.loading = true
+                    }
                 }
             }
         }

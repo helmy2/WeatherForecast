@@ -1,52 +1,56 @@
 package com.example.weather_forecast.data.mappers
 
+import com.example.weather_forecast.data.local.model.WeatherDataDb
 import com.example.weather_forecast.data.remote.WeatherDataDto
 import com.example.weather_forecast.data.remote.WeatherDto
+import com.example.weather_forecast.domain.model.WeatherDayDetails
 import com.example.weather_forecast.domain.model.WeatherDetails
-import com.example.weather_forecast.domain.model.WeatherInfo
 import com.example.weather_forecast.domain.model.WeatherType
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-private data class IndexedWeatherData(
-    val index: Int,
-    val data: WeatherDetails
-)
 
-fun WeatherDataDto.toWeatherDataMap(): Map<Int, List<WeatherDetails>> {
-    return time.mapIndexed { index, time ->
+fun WeatherDataDto.toWeatherDataList(): List<WeatherDataDb> {
+    return List(time.size) { index ->
+        val time = time[index]
         val temperature = temperatures[index]
         val weatherCode = weatherCodes[index]
         val windSpeed = windSpeeds[index]
         val pressure = pressures[index]
         val humidity = humidities[index]
-        IndexedWeatherData(
-            index = index,
-            data = WeatherDetails(
-                time = LocalDateTime.parse(time, DateTimeFormatter.ISO_DATE_TIME),
-                temperature= temperature,
-                pressure = pressure,
-                windSpeed = windSpeed,
-                humidity = humidity,
-                weatherType = WeatherType.fromWMO(weatherCode)
-            )
+        WeatherDataDb(
+            time,
+            temperature,
+            pressure,
+            windSpeed,
+            humidity,
+            weatherCode
         )
-    }.groupBy {
-        it.index / 24
-    }.mapValues {
-        it.value.map { it.data }
     }
 }
 
-fun WeatherDto.toWeatherInfo(): WeatherInfo {
-    val weatherDataMap = weatherData.toWeatherDataMap()
-    val now = LocalDateTime.now()
-    val currentWeatherData = weatherDataMap[0]?.find {
-        val hour = if(now.minute < 30) now.hour else now.hour + 1
-        it.time.hour == hour
+fun WeatherDto.toWeatherDataList(): List<WeatherDataDb> {
+    return weatherData.toWeatherDataList()
+}
+
+fun List<WeatherDetails>.toWeatherDetailsGroups(): List<WeatherDayDetails> {
+    return groupBy { it.time.dayOfMonth }.values.map {
+        WeatherDayDetails(
+            time = it.first().time,
+            maxTemperature = it.maxOf { it.temperature },
+            minTemperature = it.minOf { it.temperature },
+            weatherType = it.first { it.time.hour == LocalDateTime.now().hour }.weatherType
+        )
     }
-    return WeatherInfo(
-        weatherDataPerDay = weatherDataMap,
-        currentWeatherData = currentWeatherData
+}
+
+fun WeatherDataDb.toWeatherDetails(): WeatherDetails {
+    return WeatherDetails(
+        time = LocalDateTime.parse(time, DateTimeFormatter.ISO_DATE_TIME),
+        temperature = temperature,
+        pressure = pressure,
+        windSpeed = windSpeed,
+        humidity = humidity,
+        weatherType = WeatherType.fromWMO(weatherCode)
     )
 }

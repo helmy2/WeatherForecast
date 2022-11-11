@@ -1,6 +1,6 @@
 package com.example.weather_forecast.data.mappers
 
-import com.example.weather_forecast.data.local.model.WeatherDataDb
+import com.example.weather_forecast.data.local.database.model.WeatherDataDb
 import com.example.weather_forecast.data.remote.WeatherDataDto
 import com.example.weather_forecast.data.remote.WeatherDto
 import com.example.weather_forecast.domain.model.WeatherDayDetails

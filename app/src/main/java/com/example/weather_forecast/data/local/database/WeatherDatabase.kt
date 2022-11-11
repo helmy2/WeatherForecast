@@ -1,10 +1,10 @@
-package com.example.weather_forecast.data.local
+package com.example.weather_forecast.data.local.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.weather_forecast.data.local.model.WeatherDataDb
+import com.example.weather_forecast.data.local.database.model.WeatherDataDb
 import kotlinx.coroutines.DelicateCoroutinesApi
 
 @Database(

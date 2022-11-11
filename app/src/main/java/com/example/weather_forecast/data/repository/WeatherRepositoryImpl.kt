@@ -1,11 +1,12 @@
 package com.example.weather_forecast.data.repository
 
-import com.example.weather_forecast.data.local.WeatherDao
-import com.example.weather_forecast.data.local.model.WeatherDataDb
+import com.example.weather_forecast.data.local.database.WeatherDao
+import com.example.weather_forecast.data.local.database.model.WeatherDataDb
 import com.example.weather_forecast.data.mappers.toWeatherDataList
 import com.example.weather_forecast.data.mappers.toWeatherDetails
 import com.example.weather_forecast.data.mappers.toWeatherDetailsGroups
 import com.example.weather_forecast.data.remote.WeatherApi
+import com.example.weather_forecast.domain.location.LocationTracker
 import com.example.weather_forecast.domain.model.WeatherDayDetails
 import com.example.weather_forecast.domain.model.WeatherDetails
 import com.example.weather_forecast.domain.repository.WeatherRepository
@@ -16,12 +17,12 @@ import java.time.format.DateTimeFormatter
 
 class WeatherRepositoryImpl(
     private val dao: WeatherDao,
-    private val api: WeatherApi
+    private val api: WeatherApi,
 ) : WeatherRepository {
 
-    override suspend fun updateData() {
+    override suspend fun updateData(lat: Double, long: Double) {
         val weatherDataDbs =
-            api.getWeatherData(lat = 30.521369931774057, long = 31.232200496284516)
+            api.getWeatherData(lat, long)
                 .toWeatherDataList()
         dao.insertWeatherData(data = weatherDataDbs.toTypedArray())
     }

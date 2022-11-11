@@ -1,11 +1,19 @@
 package com.example.weather_forecast.di
 
+import android.app.Application
 import android.content.Context
-import com.example.weather_forecast.data.local.WeatherDao
-import com.example.weather_forecast.data.local.WeatherDatabase
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import com.example.weather_forecast.data.local.database.WeatherDao
+import com.example.weather_forecast.data.local.database.WeatherDatabase
+import com.example.weather_forecast.data.local.location.LocationTrackerImpl
 import com.example.weather_forecast.data.remote.WeatherApi
 import com.example.weather_forecast.data.repository.WeatherRepositoryImpl
+import com.example.weather_forecast.domain.location.LocationTracker
 import com.example.weather_forecast.domain.repository.WeatherRepository
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,7 +44,7 @@ class AppModule {
     @Singleton
     fun bindWeatherRepository(
         weatherDao: WeatherDao,
-        weatherApi: WeatherApi
+        weatherApi: WeatherApi,
     ): WeatherRepository = WeatherRepositoryImpl(weatherDao, weatherApi)
 
     @Singleton
@@ -44,5 +52,20 @@ class AppModule {
     fun provideWeatherDao(@ApplicationContext context: Context): WeatherDao {
         return WeatherDatabase.getInstance(context).weatherDao()
     }
+
+    @Provides
+    @Singleton
+    fun provideFusedLocationProviderClient(app: Application): FusedLocationProviderClient {
+        return LocationServices.getFusedLocationProviderClient(app)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocationTracker(
+        locationClient: FusedLocationProviderClient,
+        application: Application,
+    ): LocationTracker =
+        LocationTrackerImpl(locationClient, application)
+
 }
 

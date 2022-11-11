@@ -22,10 +22,6 @@ class HomeViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 5_000)
     )
 
-    init {
-        updateWeatherData()
-    }
-
     fun updateWeatherData() {
         viewModelScope.launch {
             locationTracker.getCurrentLocation()?.let { location ->

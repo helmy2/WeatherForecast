@@ -10,6 +10,7 @@ import com.example.weather_forecast.databinding.FragmentDetailsBinding
 import com.example.weather_forecast.domain.model.WeatherDetails
 import com.example.weather_forecast.domain.model.WeatherType
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
@@ -63,12 +64,14 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val todayAdapter = TodayRecyclerAdapter(listToDay)
-        val forecastAdapter = ForecastRecyclerAdapter(listForcast)
+        val todayAdapter = TodayRecyclerAdapter()
+        val forecastAdapter = ForecastRecyclerAdapter()
 
-        binding.dateItem = listToDay.first()
+        binding.dateItem=LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM , d"))
         binding.recyclerViewToday.adapter = todayAdapter
         binding.recyclerViewNextForecast.adapter = forecastAdapter
+        todayAdapter.submitList(listToDay)
+        forecastAdapter.submitList(listForcast)
 
     }
 }

@@ -7,7 +7,7 @@
 
         <variable
             name="date_item"
-            type="com.example.weather_forecast.domain.model.WeatherDetails" />
+            type="String" />
 
     </data>
 
@@ -73,11 +73,11 @@
 
         <TextView
             android:id="@+id/tv_Today_date"
-            today_date_template="@{date_item.time}"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
-            android:text="sep,12"
+            android:text="@{date_item}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toBottomOf="@+id/tv_Today"
             app:layout_constraintEnd_toEndOf="parent" />
